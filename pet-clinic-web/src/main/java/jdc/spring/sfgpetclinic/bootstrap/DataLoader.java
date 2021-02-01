@@ -1,6 +1,7 @@
 package jdc.spring.sfgpetclinic.bootstrap;
 
 import jdc.spring.sfgpetclinic.model.Owner;
+import jdc.spring.sfgpetclinic.model.Pet;
 import jdc.spring.sfgpetclinic.model.PetType;
 import jdc.spring.sfgpetclinic.model.Vet;
 import jdc.spring.sfgpetclinic.services.OwnerService;
@@ -8,6 +9,8 @@ import jdc.spring.sfgpetclinic.services.PetTypeService;
 import jdc.spring.sfgpetclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -26,22 +29,48 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         PetType dog = new PetType();
-        dog.setName("Dog1");
+        dog.setName("DogType1");
         PetType savedDogPetType = petTypeService.save(dog);
 
         PetType cat = new PetType();
-        cat.setName("Cat1");
+        cat.setName("CatType1");
         PetType savedCatPetType = petTypeService.save(cat);
 
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
+        owner1.setAddress("Lincoln St. 12/2");
+        owner1.setCity("New York");
+        owner1.setTelephone("420420420");
+
+        Pet michaelDog = new Pet();
+        michaelDog.setPetType(savedDogPetType);
+        michaelDog.setOwner(owner1);
+        michaelDog.setBirthDate(LocalDate.now());
+        michaelDog.setName("Pepeger");
+
+        owner1.getPets().add(michaelDog);
+
 
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
         owner2.setLastName("What");
+        owner2.setAddress("Miron Costin 14/3");
+        owner2.setCity("Chisinau");
+        owner2.setTelephone("69696969");
+
+        Pet fionasCat = new Pet();
+        fionasCat.setPetType(savedCatPetType);
+        fionasCat.setOwner(owner2);
+        fionasCat.setBirthDate(LocalDate.now());
+        fionasCat.setName("EZ Clap");
+
+        owner2.getPets().add(fionasCat);
+
+
+
 
         ownerService.save(owner2);
 
