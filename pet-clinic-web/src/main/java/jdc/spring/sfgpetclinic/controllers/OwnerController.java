@@ -18,9 +18,16 @@ public class OwnerController {
     @RequestMapping({"", "/", "/index", "/index.html"})
     public String listOwners(Model model){
 
-        System.out.println(ownerService.findAll());
         model.addAttribute("owners", ownerService.findAll());
 
         return "owners/index";
+    }
+
+    @RequestMapping("/find")
+    public String findOwners(Model model){
+
+        model.addAttribute("address", "owners");
+
+        return "notimplemented";
     }
 }
