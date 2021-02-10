@@ -1,4 +1,4 @@
-package jdc.spring.sfgpetclinic.services.map.springdatajpa;
+package jdc.spring.sfgpetclinic.services.springdatajpa;
 
 import jdc.spring.sfgpetclinic.model.Pet;
 import jdc.spring.sfgpetclinic.repositories.PetRepository;
