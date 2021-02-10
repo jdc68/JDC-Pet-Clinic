@@ -1,3 +1,3 @@
-# SFG-Pet-Clinic
+# JDC-Pet-Clinic
 
 Pet Clinic Spring Framework project
